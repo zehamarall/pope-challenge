@@ -1,7 +1,5 @@
 require 'test_helper'
 
 class LeadTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  should validate_uniqueness_of(:email)
 end
