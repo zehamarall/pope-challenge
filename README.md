@@ -185,8 +185,12 @@ Benchmark.realtime { importer.import! } # => Diminuir essa tempo de processament
 
 Bom. Esse é o começo de tudo. Agora é com você!
 
-A partir deste tempo inicial pode ser sua base para implementar melhorias e
-tentar novamente.
+Na minha máquina (@jonatas) rodou em 238 com 10 mil leads. Macbook 2011 com hd ssd.
 
-Experimente com arquivos de diversos tamanhos.
+A partir deste tempo inicial pode ser sua base para implementar melhorias e tentar novamente.
+
+Experimente com arquivos de diversos tamanhos. Faça seus experimentos e observações.
+
+Aguardamos seu pull request com o resumo da jornada! Qualquer dúvida só
+mencionar o @jonatas ou me enviar um email em `jonatas.paganini@resultadosdigitais.com.br`.
 
