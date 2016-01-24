@@ -45,6 +45,25 @@ class LeadImportWithMoreInfoTest < ActiveSupport::TestCase
     @simple = build(:simple_import_with_more_info)
   end
 
+  test "process boolean" do
+    assert_nil @simple.process_boolean(nil)
+
+    assert @simple.process_boolean("sim")
+    assert @simple.process_boolean("Sim")
+    assert @simple.process_boolean("yes")
+    assert @simple.process_boolean("YES")
+    assert @simple.process_boolean("Y")
+    assert @simple.process_boolean("1")
+
+    assert_not @simple.process_boolean("0")
+    assert_not @simple.process_boolean("Não")
+    assert_not @simple.process_boolean("não")
+    assert_not @simple.process_boolean("n")
+    assert_not @simple.process_boolean("no")
+    assert_not @simple.process_boolean("NO")
+
+
+  end
   test "import and update info when info is not blank." do
     leads = nil
     assert_difference "Lead.count", 1 do
@@ -52,8 +71,8 @@ class LeadImportWithMoreInfoTest < ActiveSupport::TestCase
     end
 
     assert_equal @simple.process_status, "imported"
-    assert_equal @simple.leads_imported, 1
-    assert_equal @simple.leads_updated, 5
+    assert_equal @simple.leads_imported, 1, "import just once"
+    assert_equal @simple.leads_updated, @simple.lines.length - 2, "updates the same lead with all info"
 
     lead = leads.last
 
@@ -61,7 +80,11 @@ class LeadImportWithMoreInfoTest < ActiveSupport::TestCase
     assert_equal lead.lead_info.twitter, "jonatasdp", 'it removes @ if exists'
     assert_equal lead.lead_info.facebook, "https://facebook.com/jonatas.paganini", "should adjust if passed only username"
     assert_equal lead.lead_info.linkedin, "https://www.linkedin.com/in/jonatasdp" 
-    assert_equal lead.lead_info.website, "http://ideia.me"
-    assert_equal lead.lead_info.mobile_phone, "4896378119"
+    assert_equal lead.lead_info.website, "http://ideia.me", "inserts protocols http:// if was forgotten"
+    assert_equal lead.lead_info.mobile_phone, "4896378119", "keeps just numbers"
+    assert_equal lead.city.name, "Florianópolis"
+    assert_equal lead.state.acronym, "SC"
+    assert lead.available_for_mailing, "should parse 1,0,yes,no to true or false"
+    assert_not lead.opportunity, "should parse opportunity 1,0,yes,no to true or false"
   end
 end
