@@ -164,3 +164,29 @@ Isso vai gerar um arquivo `leads.csv` no diretório atual.
 
 O arquivo tem 10001 linhas pois contém cabeçalho.
 
+Entre no terminal e faça sua primeira importação:
+
+```
+➜  pope-challenge git:(master) ✗ rails c
+```
+
+Limpe a base caso queira observar inicialmente os updates:
+
+```ruby
+[Lead,City,State].each &:delete_all
+```
+
+Instancie um LeadImport e coloque no benchmark para verificar a velocidade.
+
+```ruby
+importer = LeadImport.new file: "leads.csv" # => #<LeadImport id: nil, file: "leads.csv", leads_imported: nil, leads_updated: nil, process_status: nil, created_at: nil, updated_at: nil>
+Benchmark.realtime { importer.import! } # => Diminuir essa tempo de processamento é o seu objetivo!
+```
+
+Bom. Esse é o começo de tudo. Agora é com você!
+
+A partir deste tempo inicial pode ser sua base para implementar melhorias e
+tentar novamente.
+
+Experimente com arquivos de diversos tamanhos.
+
