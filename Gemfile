@@ -37,5 +37,11 @@ group :development, :test do
   gem 'pry'
   gem 'shoulda'
   gem 'spring'
+  gem 'guard'
+  gem 'guard-minitest'
+  gem 'factory_girl'
 end
 
+group :test do
+  gem 'ruby-prof'
+end
