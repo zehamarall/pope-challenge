@@ -58,7 +58,10 @@ class LeadImportWithMoreInfoTest < ActiveSupport::TestCase
     lead = leads.last
 
     assert_equal lead.name, "Jônatas Davi Paganini"
-    assert_equal lead.lead_info.twitter, "jonatasdp"
-
+    assert_equal lead.lead_info.twitter, "jonatasdp", 'it removes @ if exists'
+    assert_equal lead.lead_info.facebook, "https://facebook.com/jonatas.paganini", "should adjust if passed only username"
+    assert_equal lead.lead_info.linkedin, "https://www.linkedin.com/in/jonatasdp" 
+    assert_equal lead.lead_info.website, "http://ideia.me"
+    assert_equal lead.lead_info.mobile_phone, "4896378119"
   end
 end
