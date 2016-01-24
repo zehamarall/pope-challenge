@@ -31,6 +31,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem "progress"
 
 group :development, :test do
   gem 'byebug'
@@ -40,6 +41,7 @@ group :development, :test do
   gem 'guard'
   gem 'guard-minitest'
   gem 'factory_girl'
+  gem 'faker'
 end
 
 group :test do
