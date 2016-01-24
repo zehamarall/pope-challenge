@@ -51,6 +51,15 @@ O suporte técnico é verticalizado e atualemente temos poucos tickets. Quando
 algum cliente está encarando alguma lentidão ou não consegue realizar uma
 tarefa pois o processo não termina, entramos em ação.
 
+## COGS
+
+Outra grande responsabilidade do nosso time é o que diz a respeito dos **custos
+operacionais**.
+
+Somos responsáveis pela previsibilidade do crescimento e também custos
+envolvidos. Precisamos sempre estar atentos a migrações e capacidade de cada
+serviço ou infra dos servidores.
+
 ## O que esperamos de um POPER?
 
  A maioria das atividades do nosso time é cross-team pois envolve entender os componentes já existentes,
