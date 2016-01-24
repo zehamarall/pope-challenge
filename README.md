@@ -107,3 +107,60 @@ rodar os testes continuamente assistindo suas alterações.
 Crie seu fork privado e envie seu pull request com a descrição e um benchmark
 mostrando o antes e o depois das melhorias.
 
+## Workflow basico
+
+Inicie criando o banco e executando as migrações básicas
+
+    rake db:{create,setup,migrate}
+
+
+Tem algumas tarefas utilitárias para facilitar o benchmark em [./lib/tasks/gen.rake]() 
+que podem ser bem úteis para fazer os benchmarks.
+
+```
+rake gen:leads[size]   # rake gen:leads[100] to create 100 random leads
+rake gen:csv[size]     # rake gen:csv[1000] to create 1000 random leads in a csv
+```
+
+A tarefa `rake gen:leads` serve para subir uns leads de exemplo. Depois você
+pode usar `rake gen:csv` para baixar uns leads para um csv com os dados dos leads
+e re-utilizar no upload.
+
+Então para gerar 10 mil leads use:
+
+```
+➜  pope-challenge git:(master) ✗ rake gen:leads[10000]
+creating 10000 leads: 100.0% (elapsed: 3.2m)
+```
+
+
+Agora confira que os leads existem:
+
+```
+➜  pope-challenge git:(master) ✗ rails c
+Running via Spring preloader in process 23366
+Loading development environment (Rails 4.2.3)
+Lirb(main):001:0> Lead.count
+   (2.5ms)  SELECT COUNT(*) FROM "leads"
+   => 10000
+```
+
+
+Agora é hora de gerar um csv para testar e realmente poder realizar a primeira
+importação:
+
+```
+➜  pope-challenge git:(master) ✗ rake gen:csv[10000]
+ exporting 10000 leads: 100.0% (elapsed: 20s)
+```
+
+Isso vai gerar um arquivo `leads.csv` no diretório atual.
+
+
+```
+➜  pope-challenge git:(master) ✗ wc -l leads.csv
+   10001 leads.csv
+```
+
+O arquivo tem 10001 linhas pois contém cabeçalho.
+

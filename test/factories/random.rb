@@ -17,7 +17,7 @@ FactoryGirl.define do
     available_for_mailing { [true,false].sample }
     company factory: :random_company
     city factory: :random_city
-    state { State.first || factory(:random_state) }
+    state { State.first || create(:random_state) }
     lead_info factory: :random_lead_info
   end
 

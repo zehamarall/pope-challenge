@@ -15,12 +15,13 @@ namespace "gen" do
     end
   end
 
-  desc "rake gen:csv[100] to create 100 random leads in a csv"
+  desc "rake gen:csv[1000] to create 1000 random leads in a csv"
   task "csv", [:size] => :environment do |t,params|
 
+    size = params[:size].to_i || 1000
     CSV.open("leads.csv", "w+") do |csv|
       csv << %w(Email Nome Twitter Website Facebook Linkedin Phone City State Tags Opportunity Job\ Title Available\ for\ mailing)
-        Lead.all.with_progress("exporting #{Lead.count} leads").each do |lead|
+        Lead.limit(size).with_progress("exporting #{Lead.count} leads").each do |lead|
           csv << [lead.email, 
                   lead.name,
                   lead.lead_info.twitter,
