@@ -44,4 +44,6 @@ end
 
 group :test do
   gem 'ruby-prof'
+  gem "minitest-reporters"
+
 end

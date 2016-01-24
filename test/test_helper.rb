@@ -13,3 +13,6 @@ end
 class ActiveSupport::TestCase
   include FactoryGirl::Syntax::Methods
 end
+
+require "minitest/reporters"
+Minitest::Reporters.use!
