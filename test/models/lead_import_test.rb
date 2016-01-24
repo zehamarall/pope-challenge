@@ -53,7 +53,7 @@ class LeadImportWithMoreInfoTest < ActiveSupport::TestCase
 
     assert_equal @simple.process_status, "imported"
     assert_equal @simple.leads_imported, 1
-    assert_equal @simple.leads_updated, 1
+    assert_equal @simple.leads_updated, 5
 
     lead = leads.last
 

@@ -35,6 +35,7 @@ class LeadImport < ActiveRecord::Base
         update_attribute :leads_imported, self.leads_imported + 1
       end
 
+      lead.lead_info.save if  lead.lead_info.some_info_filled?
       lead.save
       leads.push lead
     end
@@ -47,11 +48,12 @@ class LeadImport < ActiveRecord::Base
     hash = row_to_hash(row)
     name = hash["Nome"] || hash["Name"] || hash["Full Name"] || hash["First Name"]
     lead.name = name unless name.blank?
-
-    if twitter = hash["twitter"] || hash["Twitter"]
-      lead.lead_info ||= LeadInfo.new
-      twitter = twitter[1..-1] if twitter.starts_with? "@"
-      lead.lead_info.twitter = twitter
+    lead.lead_info ||= LeadInfo.new lead: lead
+    if (twitter = hash["twitter"] || hash["Twitter"])
+      if !twitter.blank? && lead.lead_info.twitter.blank?
+        twitter = twitter[1..-1] if twitter.starts_with? "@"
+        lead.lead_info.twitter ||= twitter
+      end
     end
     lead
   end
