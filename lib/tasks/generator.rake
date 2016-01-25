@@ -15,7 +15,7 @@ namespace "gen" do
     end
   end
 
-  desc "rake gen:csv[1000] to create 1000 random leads in a csv"
+  desc "rake gen:csv[1000] to export N leads from database to a csv"
   task "csv", [:size] => :environment do |t,params|
 
     size = params[:size].to_i || 1000
@@ -39,33 +39,3 @@ namespace "gen" do
       end
     end
 end
-=begin
-
-      lead = Lead.create name: Faker::Name.name,
-        email: [Faker::Internet.safe_email, Faker::Internet.email, Faker::Internet.free_email].sample,
-        job_title: "Lead worker #{i}",
-        opportunity: [true,false].sample,
-        available_for_mailing: [true,false].sample,
-        city: City.find_or_create_by(name: Faker::Address.city),
-        state: State.find_or_create_by(acronym: Faker::Address.state_abbr[0,2], name: Faker::Address.state),
-        company: Company.find_or_create_by(
-          name: Faker::Company.name,
-          twitter: Faker::Internet.user_name,
-          facebook: Faker::Internet.user_name,
-          address: Faker::Address.street_address,
-          email: Faker::Internet.safe_email,
-          site: [Faker::Internet.url,Faker::Internet.domain_name].sample,
-          phone: Faker::PhoneNumber.cell_phone
-        )
-
-      LeadInfo.create lead: lead,
-        twitter: Faker::Internet.user_name,
-        facebook: Faker::Internet.user_name,
-        linkedin: Faker::Internet.user_name,
-        mobile_phone: Faker::PhoneNumber.cell_phone,
-        personal_phone: Faker::PhoneNumber.cell_phone,
-        website: [Faker::Internet.url,Faker::Internet.domain_name].sample
-        
-    end
-  end
-=end

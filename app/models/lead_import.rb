@@ -3,7 +3,7 @@ class LeadImport < ActiveRecord::Base
   validates :file, presence: true, uniqueness: true
 
   def lines
-    CSV.read(file)
+    @lines ||= CSV.read(file)
   end
 
   def import!
@@ -11,7 +11,7 @@ class LeadImport < ActiveRecord::Base
     self.leads_imported = 0
     self.leads_updated = 0
     leads = []
-    lines[1..-1].each do |line|
+    lines[1..-1].with_progress("Importing leads") do |line|
       email_columns = @header.grep(/\s?email$/i)
       lead = nil
 
