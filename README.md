@@ -114,8 +114,7 @@ Inicie criando o banco e executando as migrações básicas
     rake db:{create,setup,migrate}
 
 
-Tem algumas tarefas utilitárias para facilitar o benchmark em [./lib/tasks/gen.rake]() 
-que podem ser bem úteis para fazer os benchmarks.
+Tem algumas tarefas utilitárias para facilitar o benchmark em [./lib/tasks/generator.rake](./lib/tasks/generator.rake) que podem ser bem úteis para fazer os benchmarks.
 
 ```
 rake gen:leads[size]   # rake gen:leads[100] to create 100 random leads
@@ -183,14 +182,22 @@ importer = LeadImport.new file: "leads.csv" # => #<LeadImport id: nil, file: "le
 Benchmark.realtime { importer.import! } # => Diminuir essa tempo de processamento é o seu objetivo!
 ```
 
+
+Também tem uma tarefinha rake para facilitar o processo:
+
+```
+rake benchmark:import[size] # rake benchmark:import[1000] to benchmark N leads
+```
+
 Bom. Esse é o começo de tudo. Agora é com você!
 
-Na minha máquina (@jonatas) rodou em 238 com 10 mil leads. Macbook 2011 com hd ssd.
+Na minha máquina (@jonatas) rodou em `238 segundos` com `10 mil leads`. Macbook 2011 com HD SSD.
 
 A partir deste tempo inicial pode ser sua base para implementar melhorias e tentar novamente.
 
 Experimente com arquivos de diversos tamanhos. Faça seus experimentos e observações.
 
-Aguardamos seu pull request com o resumo da jornada! Qualquer dúvida só
-mencionar o @jonatas ou me enviar um email em `jonatas.paganini@resultadosdigitais.com.br`.
+Aguardamos seu Pull Request com o resumo da jornada!
+
+Qualquer dúvida só mencionar o @jonatas ou me enviar um email em `jonatas.paganini@resultadosdigitais.com.br`.
 
