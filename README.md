@@ -77,11 +77,13 @@ serviço ou infra dos servidores.
 - infrastructure/platforms: heroku, circleci, amazon, NewRelic
 
 
-# Ok! vamos ao desafio :dancers:
+# Ok! vamos ao desafio :rocket:
 
+A ideia do desafio é expor um pouco do que encaramos no dia a dia: performance
+e operação. Então dividimos em 2 itens principais:
 
-A ideia do desafio é expor um pouco do que encaramos no dia a dia. Melhorar a
-performance de um código já existente.  Encontrar detalhes que estão lentos e otimizar.
+1. Melhorar a performance de um código já existente. Encontrar detalhes que estão lentos e otimizar.
+2. Permitir acompanhar o projeto em operação: publicando métricas sobre as importações
 
 Este repositório contém o projeto que queremos que você analise e melhore.
 
@@ -104,8 +106,13 @@ deixando-o cada vez mais rápido.
 Use `bundle exec rake test` para rodar a bateria de testes ou `bundle exec guard` para
 rodar os testes continuamente assistindo suas alterações.
 
-Crie seu fork privado e envie seu pull request com a descrição e um benchmark
-mostrando o antes e o depois das melhorias.
+
+Também faça o setup do projeto para podermos acompanhar em termos de monitoramento da operação e performance.
+Seja envio de métricas para o librato, e rollbar para observar as excessões.
+
+Para métricas, damos preferência pelo librato, pois já usamos internamente na RD, porém sinta-se livre para adaptar com outra ferramenta de métricas.
+
+Submeta seu código com a descrição e um benchmark mostrando o antes e o depois das melhorias. Também lembre-se de adicionar os detalhes de como fazer o monitoramento e acompanhar o uso do componente remotamente.
 
 ## Workflow basico
 
