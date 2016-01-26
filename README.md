@@ -135,7 +135,7 @@ e re-utilizar no upload.
 Então para gerar 10 mil leads use:
 
 ```
-➜  pope-challenge git:(master) ✗ rake gen:leads[10000]
+$ rake gen:leads[10000]
 creating 10000 leads: 100.0% (elapsed: 3.2m)
 ```
 
@@ -143,7 +143,7 @@ creating 10000 leads: 100.0% (elapsed: 3.2m)
 Agora confira que os leads existem:
 
 ```
-➜  pope-challenge git:(master) ✗ rails c
+$ rails c
 Running via Spring preloader in process 23366
 Loading development environment (Rails 4.2.3)
 Lirb(main):001:0> Lead.count
