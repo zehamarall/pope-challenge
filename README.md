@@ -115,10 +115,21 @@ Submeta seu código com a descrição e um benchmark mostrando o antes e o depoi
 
 ## Workflow basico
 
+Baixe o projeto:
+
+```
+git clone https://github.com/ResultadosDigitais/pope-challenge
+```
+
+Instale as dependências:
+
+```
+bundle install
+```
+
 Inicie criando o banco e executando as migrações básicas
 
     rake db:{create,setup,migrate}
-
 
 Tem algumas tarefas utilitárias para facilitar o benchmark em [./lib/tasks/generator.rake](./lib/tasks/generator.rake) que podem ser bem úteis para fazer os benchmarks.
 
