@@ -85,7 +85,7 @@ e operação. Então dividimos em 2 itens principais:
 1. Melhorar a performance de um código já existente. Encontrar detalhes que estão lentos e otimizar.
 2. Permitir acompanhar o projeto em operação: publicando métricas sobre as importações
 
-Este repositório contém o projeto que queremos que você analise e melhore.
+Este [repositório](https://github.com/ResultadosDigitais/pope-challenge) contém o projeto que queremos que você analise e melhore.
 
 O projeto foi escrito em poucas horas mas simula a funcionalidade básica que
 temos no RDStation de importação de leads.
@@ -156,7 +156,7 @@ Agora é hora de gerar um csv para testar e realmente poder realizar a primeira
 importação:
 
 ```
-➜  pope-challenge git:(master) ✗ rake gen:csv[10000]
+$ rake gen:csv[10000]
  exporting 10000 leads: 100.0% (elapsed: 20s)
 ```
 
@@ -164,7 +164,7 @@ Isso vai gerar um arquivo `leads.csv` no diretório atual.
 
 
 ```
-➜  pope-challenge git:(master) ✗ wc -l leads.csv
+$ wc -l leads.csv
    10001 leads.csv
 ```
 
@@ -173,7 +173,7 @@ O arquivo tem 10001 linhas pois contém cabeçalho.
 Entre no terminal e faça sua primeira importação:
 
 ```
-➜  pope-challenge git:(master) ✗ rails c
+$ rails c
 ```
 
 Limpe a base caso queira observar inicialmente os updates:
@@ -193,7 +193,7 @@ Benchmark.realtime { importer.import! } # => Diminuir essa tempo de processament
 Também tem uma tarefinha rake para facilitar o processo:
 
 ```
-rake benchmark:import[size] # rake benchmark:import[1000] to benchmark N leads
+$ rake benchmark:import[size] # rake benchmark:import[1000] to benchmark N leads
 ```
 
 Bom. Esse é o começo de tudo. Agora é com você!
