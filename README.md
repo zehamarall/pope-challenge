@@ -47,7 +47,7 @@ os gargalos e garantir que o sistema está andando bem.
     Quando não houver mais times especializados cai pra gente
      -> questões de suporte e operação
 
-O suporte técnico é verticalizado e atualemente temos poucos tickets. Quando
+O suporte técnico é verticalizado e atualmente temos poucos tickets. Quando
 algum cliente está encarando alguma lentidão ou não consegue realizar uma
 tarefa pois o processo não termina, entramos em ação.
 
@@ -72,10 +72,9 @@ serviço ou infra dos servidores.
 
 ### Conhecimentos desejados
 
-- poliglota (sem medo de linguagens) - manjar de Ruby e GO é :+1:
+- poliglota (sem medo de linguagens) - manjar de Ruby e GO é um plus.
 - ferramentas: Redis, MongoDB, Postgresql, ElasticSearch, Background jobs (Sidekiq, Resque)
-- infrastructure/platforms: heroku, circleci, amazon, NewRelic
-
+- infrastructure/platforms: heroku, circleci, amazon, NewRelic, Librato
 
 # Ok! vamos ao desafio :rocket:
 
@@ -125,7 +124,7 @@ Tem algumas tarefas utilitárias para facilitar o benchmark em [./lib/tasks/gene
 
 ```
 rake gen:leads[size]   # rake gen:leads[100] to create 100 random leads
-rake gen:csv[size]     # rake gen:csv[1000] to create 1000 random leads in a csv
+rake gen:csv[size]     # rake gen:csv[1000] exports 1000 random leads form database to a csv
 ```
 
 A tarefa `rake gen:leads` serve para subir uns leads de exemplo. Depois você
@@ -160,8 +159,11 @@ $ rake gen:csv[10000]
  exporting 10000 leads: 100.0% (elapsed: 20s)
 ```
 
-Isso vai gerar um arquivo `leads.csv` no diretório atual.
+    Note que estamos gerando o arquivo csv apenas com leads já existentes na base,
+    então esse arquivo é apenas um início para os testes já que toda importação irá
+    fazer apenas UPDATE.
 
+Isso vai gerar um arquivo `leads.csv` no diretório atual.
 
 ```
 $ wc -l leads.csv
