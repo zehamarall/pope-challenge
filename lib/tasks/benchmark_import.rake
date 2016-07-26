@@ -9,7 +9,7 @@ namespace :benchmark do
     require 'ruby-prof'
     result = RubyProf.profile do
 
-      importer = LeadImport.new file: 'leads.csv'
+      importer = LeadImport.new file: '/tmp/ram/leads.csv'
       leads = []
       total_lines = importer.lines.size - 1
       puts "will import #{total_lines} lines"

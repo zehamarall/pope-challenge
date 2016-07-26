@@ -19,7 +19,7 @@ namespace "gen" do
   task "csv", [:size] => :environment do |t,params|
 
     size = params[:size].to_i || 1000
-    CSV.open("leads.csv", "w+") do |csv|
+    CSV.open("/tmp/ram/leads.csv", "w+") do |csv|
       csv << %w(Email Nome Twitter Website Facebook Linkedin Phone City State Tags Opportunity Job\ Title Available\ for\ mailing)
         Lead.limit(size).with_progress("exporting #{Lead.count} leads").each do |lead|
           csv << [lead.email, 

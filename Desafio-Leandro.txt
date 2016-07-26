@@ -1,0 +1,27 @@
+Inicialmente gostaria de agradecer a oportunidade de fazer este desafio, e expor que foi um exelente desafio conhecer um pouco de Ruby e com toda a certaza estudarei mais está poderosa linguagem.
+
+Desafio POPE
+
+Inicialmente eu comecei a instalar o ambiente na minha máquina local que é um ArchLinux, tive problemas para instalar o agente do librato e o new realic pois não tem suporte para ArchLinux.
+
+Resolvi então criar uma máquina virtual ubuntu-server 16-04 instalei todo o ambiente e o agente do Librato :).
+
+Melhorias:
+  Criei um diretorio onde fica o arquivo de cvs em memória:
+  * sudo mount -t tmpfs -o size=512M tmpfs /tmp/ram/
+
+  Criação de um indice para melhorar a performance da tabela de Leads.
+
+Resultados:
+
+  Com a utilização da máquina virtual o melhor resultado foi 648 segundos com as duas melhorias realizadas, no qual obtive um ligeiro ganho de performancena aplicação.
+
+Encontrei uma certa dificuldade em entender o código em Ruby pois não conheco a fundo a linguagem, estou mais acostumado a outras linguagens como javascript, go e C Ansi.
+Achei alguns tutorias que melhoravam a performance de aplicações parecidas http://blog.codeship.com/speeding-up-bulk-imports-in-rails/. Estou sempre disposto de aprender 
+novas tecnologias, linguagens e incarar novos desafios como este.
+
+Atualmente estou participando dos eventos de DEVOPS de região e estou gostando muito desta área. Gostaria de fazer parte da equipe POPE onde darei o meu máximo para não deixa o barco andar para trás.
+
+Obrigado
+
+Leandro Amaral

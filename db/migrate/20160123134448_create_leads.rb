@@ -1,7 +1,8 @@
 class CreateLeads < ActiveRecord::Migration
+
   def change
     create_table :leads do |t|
-      t.string :email
+      t.string :email, uniqueness: true, unless: :skip_uniqueness
       t.string :name
       t.string :job_title
       t.text :bio
@@ -15,5 +16,6 @@ class CreateLeads < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+    add_index "leads", ["email"], name: "index_email", unique: true, using: :btree
   end
 end
